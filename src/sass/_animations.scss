@@ -1,0 +1,67 @@
+
+/*include name of the keyframe "moveInLeft" as value to "animation-name" property 
+for the element that needs to be animated*/
+@keyframes moveInLeft {
+	/*initial state when the animation starts*/
+	0% {
+		/*initially we want it to be transparent*/
+		opacity: 0;
+		/*the animation begins 100px from the left*/
+		transform: translateX(-10rem); 
+	} 
+
+	/*final state wehen the animation ends*/
+	100% {
+		opacity: 1;
+		/*animation ends where the element is located*/
+		transform: translate(0);
+	}
+}
+@keyframes moveInRight {
+	/*initial state when the animation starts*/
+	0% {
+		/*initially we want it to be transparent*/
+		opacity: 0;
+		/*the animation begins 100px from the left*/
+		transform: translateX(10rem); 
+	} 
+
+	/*final state wehen the animation ends*/
+	100% {
+		opacity: 1;
+		/*animation ends where the element is located*/
+		transform: translate(0);
+	}
+}
+@keyframes moveInBottom {
+	/*initial state when the animation starts*/
+	0% {
+		/*initially we want it to be transparent*/
+		opacity: 0;
+		/*the animation begins 100px from the bottom*/
+		transform: translateY(10rem); 
+	} 
+	
+	/*final state wehen the animation ends*/
+	100% {
+		opacity: 1;
+		/*animation ends where the element is located*/
+		transform: translate(0);
+	}
+}
+@keyframes moveInTop {
+	/*initial state when the animation starts*/
+	0% {
+		/*initially we want it to be transparent*/
+		opacity: 0;
+		/*the animation begins 100px from the bottom*/
+		transform: translateY(-10rem); 
+	} 
+	
+	/*final state wehen the animation ends*/
+	100% {
+		opacity: 1;
+		/*animation ends where the element is located*/
+		transform: translate(0);
+	}
+}

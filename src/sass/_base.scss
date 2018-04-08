@@ -1,0 +1,21 @@
+
+*,
+*::after,
+*::before {
+	/*Remove all browser added margin and padding so we can add it ourselves later*/
+	margin: 0;
+	padding: 0;
+	/*All the border padding margins are removed for all elements*/
+	box-sizing: inherit;
+}
+
+html {
+	/*this defines what 1rem is for the whole application*/
+	font-size: 62.5%; //1rem = 10px: 10px/16px =62.5%
+
+	
+}
+
+body {
+	box-sizing: border-box;	
+}
