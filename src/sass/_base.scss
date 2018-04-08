@@ -12,6 +12,10 @@
 html {
 	/*this defines what 1rem is for the whole application*/
 	font-size: 62.5%; //1rem = 10px: 10px/16px =62.5%
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	overflow: hidden;
 
 	
 }
