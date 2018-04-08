@@ -9,7 +9,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot -prod"
+    "postinstall": "ng build --aot -prod",
+    "postbuild": "npm run deploy",
+    "predeploy": "rimraf ../../SpringFramework/hotel-reservation/src/main/resources/static/ && mkdirp ../../SpringFramework/hotel-reservation/src/main/resources/static/",
+    "deploy": "copyfiles -f dist/** ../../SpringFramework/hotel-reservation/src/main/resources/static/"
   },
   "private": true,
   "dependencies": {
@@ -47,6 +50,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.2",
+    "rimraf": "^2.6.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
