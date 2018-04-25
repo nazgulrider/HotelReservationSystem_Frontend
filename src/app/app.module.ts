@@ -17,12 +17,13 @@ import { AuthService } from './shared/auth.service';
 import { XhrInterceptor } from './interceptor';
 import { HomeLoginComponent } from './home/home-login/home-login.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AuthGuard } from './shared/auth-guard.service';
 
 
 const appRoutes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: 'home', component: HomeComponent},
-  {path: 'hotels', component: HotelComponent}
+  {path: 'hotels', component: HotelComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     FormsModule
   ],
   providers: [
+    AuthGuard,
     HotelService,
     CookieService,
     AuthService,

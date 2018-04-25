@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { CookieService } from "ngx-cookie-service";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthService {
 
-    authenticated: boolean = false;
-
-    constructor(private http: HttpClient) {       
+   
+    constructor(private http: HttpClient, private authCookie: CookieService, private router:Router) {       
     }
     authenticate(credentials, callback) {
 
@@ -15,14 +16,23 @@ export class AuthService {
         } : {});
 
         this.http.get('api/auth', { headers: headers }).subscribe(response => {
+            console.log(response);
             if (response['name']) {
-                this.authenticated = true;
-            } else {
-                this.authenticated = false;
-            }
+                this.authCookie.set('authenticated', 'true')
+            } 
             return callback && callback();
         });
 
     }
 
+    isAuthenticated(){
+        return this.authCookie.get('authenticated') === 'true';
+    }
+
+    logout(){
+        this.http.post('/api/logout', {}).finally(() => {
+            this.authCookie.set('authenticated','false');
+            this.router.navigate(['home']);
+        }).subscribe();
+    }
 }

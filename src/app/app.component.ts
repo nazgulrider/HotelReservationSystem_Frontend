@@ -10,10 +10,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'app';
-  authenticated:boolean=true;
 
-  constructor(){
-  }
+  constructor(protected auth: AuthService){}
 
 
 }

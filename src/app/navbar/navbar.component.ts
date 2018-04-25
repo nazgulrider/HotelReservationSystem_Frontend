@@ -10,10 +10,8 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  authenticated: boolean=false; 
-
+  
   constructor(private auth: AuthService, private http: HttpClient, private router: Router) { 
-    this.authenticated = this.auth.authenticated;
   }
 
   ngOnInit() {
@@ -21,10 +19,6 @@ export class NavbarComponent implements OnInit {
 
 
   logout() {
-    this.http.post('/api/logout', {}).finally(() => {
-      this.auth.authenticated = false;
-      this.router.navigateByUrl('/home');
-    }).subscribe();
-
+    this.auth.logout();
   }
 }

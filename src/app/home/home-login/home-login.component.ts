@@ -21,7 +21,7 @@ export class HomeLoginComponent implements OnInit {
 
   login() {
     this.auth.authenticate(this.credentials, () => {
-      this.router.navigateByUrl('/hotels')
+      this.router.navigate(['hotels'])
     });
     return false;
   }
