@@ -1,0 +1,55 @@
+@import '~sass/variables';
+
+.popup__content {
+    height: auto;
+    background-color: rgba($color: white, $alpha: .9);
+ 
+}
+
+.form {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    
+    &__group {
+        margin-bottom: 2rem;
+        
+    }
+    &__input {
+        width: 100%;
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        border-radius: 2px;
+        border: none;
+        border-bottom: 3px solid transparent;
+        
+       
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color-black, .2);
+            border-bottom: 3px solid $color-green;
+        }
+
+        &:focus:invalid {
+            border-bottom: 3px solid $color-primary;
+        }
+    }
+
+    &__label {
+        display: block;
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
+    
+}
+.btn{
+    background-color: #d36e48;
+    color: #fff;
+    font-size: 1.3rem; 
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 3px;
+
+    &-text{
+        padding: 1rem;
+    }
+}

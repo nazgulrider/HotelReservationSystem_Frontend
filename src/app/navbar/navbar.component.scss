@@ -1,0 +1,44 @@
+@import '~sass/variables';
+
+
+.transparent {
+    position: fixed;
+    top:0;
+    z-index: 12;
+    height: 6rem;
+    background: linear-gradient(0deg,rgba(white,0),rgba(black,.4));
+
+    
+    
+    & li {
+        color: $color-white;
+        font-size: 1.5rem;
+        list-style: none;   
+        display: inline;   
+        text-transform: uppercase;
+        font-weight: 600;
+
+        &:not(:first-child){
+            margin-left: 2rem;
+        }
+
+        & a {    
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            padding-top: .8rem;
+            color: white;
+            
+        }
+  
+        &:last-child {
+            cursor: pointer;
+            float: right;
+        }
+
+    }
+}
+
+    
+
+  

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AuthService } from './shared/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  authenticated:boolean=true;
+
+  constructor(){
+  }
+
+
 }

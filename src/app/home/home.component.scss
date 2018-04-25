@@ -1,5 +1,9 @@
 @import '~sass/variables';
 
+
+.cont{
+    overflow: hidden;
+}
 .home {
     height: 100vh;
     background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
@@ -11,8 +15,7 @@
     -o-filter: blur(.4rem);
     -ms-filter: blur(.4rem);
     filter: blur(.4rem);
-    transform: scale(1.03);
-    
+    transform: scale(1.03); 
 
     &-description {
         color: $color-gray-light-2;
@@ -47,13 +50,17 @@
     }
 
     &-para {
-            font-size: 1.5rem;
-           animation-name: moveInBottom;
-           animation-duration: 2s;
-           margin-top: 2rem;
-           margin-bottom: 2rem;
+        font-size: 1.5rem;
+        animation-name: moveInBottom;
+        animation-duration: 2s;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
     }
     
 
 }
 
+.btn {
+    background-color: $color-primary;
+    color: white;
+}
