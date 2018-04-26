@@ -34,8 +34,7 @@ export class HotelComponent implements OnInit {
   links: any[] = [];
 
   selectedHotel: Hotel;
-  opacity = 0;
-  visibility = 'hidden';
+  
 
   constructor(private hotelService: HotelService) { }
 
@@ -51,17 +50,13 @@ export class HotelComponent implements OnInit {
     }    
   }
 
-  slect(hotel:Hotel){
+  select(hotel:Hotel){
     this.selectedHotel = hotel;
   }
 
-  openModal(){
-    this.opacity = 1;
-    this.visibility = 'visible';
+  onClose(event){
+    this.selectedHotel = null;
   }
 
-  onCloseHandled(){
-    this.opacity = 0;
-    this.visibility = 'hidden';
-  }
+
 }

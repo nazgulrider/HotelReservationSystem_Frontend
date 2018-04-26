@@ -4,6 +4,7 @@
 .transparent {
     position: fixed;
     top:0;
+    padding-top: .6rem;
     z-index: 12;
     height: 6rem;
     background: linear-gradient(0deg,rgba(white,0),rgba(black,.4));
@@ -37,6 +38,16 @@
         }
 
     }
+}
+.img-thumbnail {
+    margin-left: 2rem;
+    height: 4rem;
+    float: right;
+    border-radius: 20rem;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    overflow: hidden;
 }
 
     

@@ -1,3 +1,18 @@
-<p>
-  hotel-details works!
-</p>
+<div class="popup" *ngIf="hotel">
+  <div class="popup__content">
+    <div class="popup__left">
+      <img src="../../assets/images/room-1.jpg" alt="Room" class="popup__img">
+      <img src="../../assets/images/room-2.jpg" alt="Room" class="popup__img">
+      <img src="../../assets/images/room-3.jpg" alt="Room" class="popup__img">
+    </div>
+    <div class="popup__right">
+      <button type="button" class="close" (click)="onCloseHandled()">&times;</button>
+
+      <span>{{ hotel.name }}</span>
+      <hr>
+      <span> {{ hotel.rating }} </span>
+      <hr>
+      <span>{{ hotel.description }} </span>
+    </div>
+  </div>
+</div>

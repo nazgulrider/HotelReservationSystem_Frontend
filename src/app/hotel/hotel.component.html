@@ -1,6 +1,6 @@
 <div class="hotel col-lg-8  offset-lg-2" [@listAnimation]="hotels.length">
   <ul>
-    <div class="hotel-card" *ngFor="let hotel of hotels" (click)="openModal()">
+    <div class="hotel-card" *ngFor="let hotel of hotels" (click)="select(hotel)">
       <img class="hotel-card--img" src="{{'../../assets/images/'+hotel.url}}">
       <div class="hotel-card--text col-md-8 col-xs-12">
         <span class="hotel-card--text__heading">
@@ -18,15 +18,4 @@
     </div>
   </ul>
 </div>  
-<div class="popup" [ngStyle]="{'opacity':opacity,'visibility':visibility}">
-  <div class="popup__content" [ngStyle]="{'opacity':opacity,'visibility':visibility}">
-    <div class="popup__left">
-      <img src="../../assets/images/room-1.jpg" alt="Room" class="popup__img">
-      <img src="../../assets/images/room-2.jpg" alt="Room" class="popup__img">
-      <img src="../../assets/images/room-3.jpg" alt="Room" class="popup__img">
-    </div>
-    <div class="popup__right">
-      <button type="button" class="close" (click)="onCloseHandled()">&times;</button>
-    </div>
-  </div>
-</div>
+<app-hotel-details [hotel]="selectedHotel" (close)="onClose()"> </app-hotel-details>

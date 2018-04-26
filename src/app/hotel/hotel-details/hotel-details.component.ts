@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Hotel } from '../hotel.model';
 
 @Component({
   selector: 'app-hotel-details',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HotelDetailsComponent implements OnInit {
 
+  @Input() hotel: Hotel; 
+  @Output() close: EventEmitter<any> = new EventEmitter();
+
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+
+  onCloseHandled() {
+    this.close.emit();
   }
 
 }

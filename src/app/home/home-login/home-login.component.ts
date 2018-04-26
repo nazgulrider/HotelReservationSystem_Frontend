@@ -25,4 +25,8 @@ export class HomeLoginComponent implements OnInit {
     });
     return false;
   }
+
+  onCloseHandled(){
+    
+  }
 }
