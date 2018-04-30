@@ -14,5 +14,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  onCloseHandled(){
+    this.hide = true;
+  }
 
 }

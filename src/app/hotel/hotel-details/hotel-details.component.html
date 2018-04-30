@@ -1,18 +1,115 @@
-<div class="popup" *ngIf="hotel">
-  <div class="popup__content">
-    <div class="popup__left">
-      <img src="../../assets/images/room-1.jpg" alt="Room" class="popup__img">
-      <img src="../../assets/images/room-2.jpg" alt="Room" class="popup__img">
-      <img src="../../assets/images/room-3.jpg" alt="Room" class="popup__img">
-    </div>
-    <div class="popup__right">
-      <button type="button" class="close" (click)="onCloseHandled()">&times;</button>
+<div class="popup" *ngIf="hotel" (click)="onCloseHandled()">
 
-      <span>{{ hotel.name }}</span>
-      <hr>
-      <span> {{ hotel.rating }} </span>
-      <hr>
-      <span>{{ hotel.description }} </span>
+  <div class="popup__content col-lg-12">
+    <div class="card col-lg-3 offset-lg-1" (click)="onCardClicked()">
+      <div>
+        <img src="../../assets/images/room-1.jpg" alt="Room" class="card__img">
+      </div>
+      <div class="card__description" [hidden]="showDatePicker1">
+        <div class="card__description--title">
+          <h1>Royal</h1>
+        </div>
+        <div class="card__description--content">          
+          <ul>
+            <hr>
+            <li>King size bed</li>
+            <hr>
+            <li>24 hour room service</li>
+            <hr>
+            <li>Royal perks</li>
+            <hr>
+            <li>In-room swimming pool</li>
+            <hr>
+          </ul>
+        </div>
+      </div>
+      <div class="card__date" [hidden]="!showDatePicker1">
+        <label for="start">Start</label>
+        <input type="date" name="start" id="start">
+        <hr>
+        <label for="end">End</label>
+        <input type="date" name="end" id="end">
+        <hr>
+      </div>
+      <div class="card__button">
+        <a (click)="onCheckAvailable(1)" class="btn" [hidden]="showDatePicker1">Book Now</a>
+        <a (click)="findAvailableRooms(1)" class="btn" [hidden]="!showDatePicker1">Check Availability</a>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------------------------------------------------------------ -->
+    <div class="card col-lg-3" (click)="onCardClicked()">
+      <div>
+        <img src="../../assets/images/room-2.jpg" alt="Room" class="card__img">
+      </div>
+      <div class="card__description" [hidden]="showDatePicker2">
+        <div class="card__description--title">
+          <h1>Presidential</h1>
+        </div>
+        <div class="card__description--content">
+          <ul>
+            <hr>
+            <li>Queen size bed</li>
+            <hr>
+            <li>24 hour room service</li>
+            <hr>
+            <li>Presidential perks</li>
+            <hr>
+            <li>In-room jacuzzi</li>
+            <hr>
+          </ul>
+        </div>
+      </div>
+      <div class="card__date" [hidden]="!showDatePicker2">
+        <label for="start">Start</label>
+        <input type="date" name="start" id="start">
+        <hr>
+        <label for="end">End</label>
+        <input type="date" name="end" id="end">
+        <hr>
+      </div>
+      <div class="card__button">
+        <a (click)="onCheckAvailable(2)" class="btn" [hidden]="showDatePicker2">Book Now</a>
+        <a (click)="findAvailableRooms(2)" class="btn" [hidden]="!showDatePicker2">Check Availability</a>
+      </div>
+    </div>
+
+    <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+
+    <div class="card col-lg-3" (click)="onCardClicked()">
+      <div>
+        <img src="../../assets/images/room-3.jpg" alt="Room" class="card__img">
+      </div>
+      <div class="card__description" [hidden]="showDatePicker3">
+        <div class="card__description--title">
+          <h1>Deluxe</h1>
+        </div>
+        <div class="card__description--content">
+          <ul>
+            <hr>
+            <li>Twin size bed</li>
+            <hr>
+            <li>Complimentary breakfast</li>
+            <hr>
+            <li>Deluxe perks</li>
+            <hr>
+            <li>In-room bathtub</li>
+            <hr>
+          </ul>
+        </div>
+      </div>
+      <div class="card__date" [hidden]="!showDatePicker3">
+        <label for="start">Start</label>
+        <input type="date" name="start" id="start">
+        <hr>
+        <label for="end">End</label>
+        <input type="date" name="end" id="end">
+        <hr>
+      </div>
+      <div class="card__button">
+        <a (click)="onCheckAvailable(3)" class="btn" [hidden]="showDatePicker3">Book Now</a>
+        <a (click)="findAvailableRooms(3)" class="btn" [hidden]="!showDatePicker3">Check Availability</a>
+      </div>
     </div>
   </div>
 </div>

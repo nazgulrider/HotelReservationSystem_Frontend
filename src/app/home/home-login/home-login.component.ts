@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../shared/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HomeLoginComponent implements OnInit {
 
+  @Output() close: EventEmitter<any> = new EventEmitter();
 
   credentials = { username: '', password: '' };
 
@@ -27,6 +28,6 @@ export class HomeLoginComponent implements OnInit {
   }
 
   onCloseHandled(){
-    
+    this.close.emit();
   }
 }

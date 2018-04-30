@@ -8,9 +8,7 @@
         animation: moveInBottom 2s;
         font-size: $default-font-size;
     }
-    &:hover {		
-        transform: translateY(-.3rem);            
-    }
+   
     &:active {
         transform: translateY(-.1rem);
     }

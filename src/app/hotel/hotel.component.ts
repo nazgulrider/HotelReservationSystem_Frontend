@@ -54,7 +54,7 @@ export class HotelComponent implements OnInit {
     this.selectedHotel = hotel;
   }
 
-  onClose(event){
+  onClose(){
     this.selectedHotel = null;
   }
 

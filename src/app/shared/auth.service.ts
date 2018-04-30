@@ -18,7 +18,7 @@ export class AuthService {
         this.http.get('api/auth', { headers: headers }).subscribe(response => {
             console.log(response);
             if (response['name']) {
-                this.authCookie.set('authenticated', 'true')
+                this.authCookie.set('authenticated', 'true',.2)
             } 
             return callback && callback();
         });
