@@ -13,7 +13,7 @@ import { UserService } from '../shared/user.service';
 export class NavbarComponent implements OnInit {
   private user:User;
   
-  constructor(private auth: AuthService) { 
+  constructor(public auth: AuthService) { 
   }
 
   ngOnInit() {

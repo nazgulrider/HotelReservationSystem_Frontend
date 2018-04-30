@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from './shared/auth.service';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +8,6 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'app';
 
-  constructor(protected auth: AuthService){}
-
+  constructor(){}
 
 }
