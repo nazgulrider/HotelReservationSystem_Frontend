@@ -3,11 +3,14 @@
 .popup__content {
     height: auto;
     background-color: rgba($color: white, $alpha: .9);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
  
 }
 
 .close {
-    padding-top: 1rem;
+    padding-right: 1rem;
+    font-size: 3rem;
 }
 
 .form {

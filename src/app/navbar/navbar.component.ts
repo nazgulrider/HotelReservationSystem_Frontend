@@ -11,6 +11,7 @@ import { UserService } from '../shared/user.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+
   private user:User;
   
   constructor(public auth: AuthService) { 
@@ -18,7 +19,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
   }
-
  
 
   logout() {

@@ -1,7 +1,7 @@
 <div class="popup" *ngIf="hotel" (click)="onCloseHandled()">
 
   <div class="popup__content col-lg-12">
-    <div class="card col-lg-3 offset-lg-1" (click)="onCardClicked()">
+    <div class="card col-lg-3 offset-lg-1" (click)="onCardClicked($event)">
       <div>
         <img src="../../assets/images/room-1.jpg" alt="Room" class="card__img">
       </div>
@@ -25,11 +25,10 @@
       </div>
       <div class="card__date" [hidden]="!showDatePicker1">
         <label for="start">Start</label>
-        <input type="date" name="start" id="start">
+        <input type="text" placeholder="yyyy-mm-dd" name="start" id="start" ngbDatepicker #s = "ngbDatepicker" (click)="s.toggle()">
         <hr>
         <label for="end">End</label>
-        <input type="date" name="end" id="end">
-        
+        <input type="text" placeholder="yyyy-mm-dd" name="end" id="end" ngbDatepicker #e = "ngbDatepicker" (click)="e.toggle()">        
       </div>
       <div class="card__button">
         <a (click)="onCheckAvailable(1)" class="btn" [hidden]="showDatePicker1">Book Now</a>
@@ -38,7 +37,8 @@
     </div>
 
     <!-- ------------------------------------------------------------------------------------------------------------------------ -->
-    <div class="card col-lg-3" (click)="onCardClicked()">
+
+    <div class="card col-lg-3" (click)="onCardClicked($event)">
       <div>
         <img src="../../assets/images/room-2.jpg" alt="Room" class="card__img">
       </div>
@@ -62,10 +62,10 @@
       </div>
       <div class="card__date" [hidden]="!showDatePicker2">
         <label for="start">Start</label>
-        <input type="date" name="start" id="start">
+        <input type="text" placeholder="yyyy-mm-dd" name="start2" id="start2" ngbDatepicker #s2="ngbDatepicker" (click)="s2.toggle()">
         <hr>
         <label for="end">End</label>
-        <input type="date" name="end" id="end">
+        <input type="text" placeholder="yyyy-mm-dd" name="end2" id="end2" ngbDatepicker #e2="ngbDatepicker" (click)="e2.toggle()">
       </div>
       <div class="card__button">
         <a (click)="onCheckAvailable(2)" class="btn" [hidden]="showDatePicker2">Book Now</a>
@@ -75,7 +75,7 @@
 
     <!-- -------------------------------------------------------------------------------------------------------------------------- -->
 
-    <div class="card col-lg-3" (click)="onCardClicked()">
+    <div class="card col-lg-3" (click)="onCardClicked($event)">
       <div>
         <img src="../../assets/images/room-3.jpg" alt="Room" class="card__img">
       </div>
@@ -99,10 +99,10 @@
       </div>
       <div class="card__date" [hidden]="!showDatePicker3">
         <label for="start">Start</label>
-        <input type="date" name="start" id="start">
+        <input type="text" placeholder="yyyy-mm-dd" name="start3" id="start3" ngbDatepicker #s3="ngbDatepicker" (click)="s3.toggle()">
         <hr>
         <label for="end">End</label>
-        <input type="date" name="end" id="end">
+        <input type="text" placeholder="yyyy-mm-dd" name="end3" id="end3" ngbDatepicker #e3="ngbDatepicker" (click)="e3.toggle()">
       </div>
       <div class="card__button">
         <a (click)="onCheckAvailable(3)" class="btn" [hidden]="showDatePicker3">Book Now</a>

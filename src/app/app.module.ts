@@ -4,6 +4,11 @@ import { Routes, RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HotelComponent } from './hotel/hotel.component';
@@ -41,7 +46,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    NgbModule.forRoot()
   ],
   providers: [
     AuthGuard,

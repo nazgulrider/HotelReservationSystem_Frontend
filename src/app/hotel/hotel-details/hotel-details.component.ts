@@ -11,6 +11,7 @@ export class HotelDetailsComponent implements OnInit {
   @Input() hotel: Hotel; 
   @Output() close: EventEmitter<any> = new EventEmitter();
 
+
   showDatePicker1:boolean = false;
   showDatePicker2:boolean = false;
   showDatePicker3:boolean = false;
@@ -52,10 +53,10 @@ export class HotelDetailsComponent implements OnInit {
   
   //cancel the click event from propagating to the parent div which triggers close event on the window
   onCardClicked(e:Event){
-    if (!e) var e = window.event;
-    e.cancelBubble = true;
-
-    if (e.stopPropagation) e.stopPropagation();
+    if(e){
+      e.stopPropagation();
+    }
+    return false;
   }
 
 
