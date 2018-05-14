@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MyDateRangePickerModule } from "mydaterangepicker";
 
 
 
@@ -12,7 +13,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HotelComponent } from './hotel/hotel.component';
-import { HotelListComponent } from './hotel/hotel-list/hotel-list.component';
 import { HotelDetailsComponent } from './hotel/hotel-details/hotel-details.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HotelService } from './hotel/hotel.service';
@@ -23,12 +23,20 @@ import { XhrInterceptor } from './interceptor';
 import { HomeLoginComponent } from './home/home-login/home-login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AuthGuard } from './shared/auth-guard.service';
+import { UserService } from './shared/user.service';
+import { RoomListComponent } from './hotel/room-list/room-list.component';
+
 
 
 const appRoutes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
-  {path: 'home', component: HomeComponent},
-  {path: 'hotels', component: HotelComponent, canActivate: [AuthGuard]}
+  {path: 'home', component: HomeComponent, children: [
+    { path: 'login', component: HomeLoginComponent }
+  ]},
+  {path: 'hotels', component: HotelComponent, canActivate: [AuthGuard], children: [
+    { path: ':id/detail', component: HotelDetailsComponent },
+    { path: ':id/rooms', component: RoomListComponent }
+  ]}
 ];
 
 @NgModule({
@@ -36,10 +44,10 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     HotelComponent,
-    HotelListComponent,
     HotelDetailsComponent,
     HomeLoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    RoomListComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,14 +55,16 @@ const appRoutes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    MyDateRangePickerModule
   ],
   providers: [
     AuthGuard,
     HotelService,
     CookieService,
     AuthService,
-    { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },
+    UserService
   ],
   bootstrap: [AppComponent]
 })

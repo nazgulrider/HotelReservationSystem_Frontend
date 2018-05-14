@@ -1,7 +1,7 @@
 <div class="hotel col-lg-8  offset-lg-2" [@listAnimation]="hotels.length">
   <ul>
     <div class="hotel-card" *ngFor="let hotel of hotels" (click)="select(hotel)">
-      <img class="hotel-card--img" src="{{'../../assets/images/'+hotel.url}}">
+      <img class="hotel-card--img" src="{{hotel.url}}">
       <div class="hotel-card--text col-md-8 col-xs-12">
         <span class="hotel-card--text__heading">
           {{hotel.name}}
@@ -18,5 +18,5 @@
     </div>
   </ul>
 </div>  
-<app-hotel-details [hotel]="selectedHotel" (close)="onClose()"> </app-hotel-details>
-<!-- <router-outlet [hotel]="selectedHotel" (close)="onClose()"> </router-outlet> -->
+<!-- <app-hotel-details [hotel]="selectedHotel" (close)="onClose()"> </app-hotel-details> -->
+<router-outlet> </router-outlet>

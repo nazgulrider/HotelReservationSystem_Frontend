@@ -12,6 +12,8 @@ export class HomeLoginComponent implements OnInit {
 
   @Output() close: EventEmitter<any> = new EventEmitter();
 
+  error: any;
+
   credentials = { username: '', password: '' };
 
   constructor(private auth: AuthService, private http: HttpClient, private router: Router) { }
@@ -21,13 +23,14 @@ export class HomeLoginComponent implements OnInit {
 
 
   login() {
-    this.auth.authenticate(this.credentials, () => {
-      this.router.navigate(['hotels'])
-    });
-    return false;
+    this.auth.authenticate(this.credentials,
+      () => { this.router.navigate(['hotels']) },
+      () => { this.error = this.auth.error });
+
   }
 
-  onCloseHandled(){
-    this.close.emit();
+  onCloseHandled() {
+    this.error = null;
+    this.router.navigate(['home']);
   }
 }

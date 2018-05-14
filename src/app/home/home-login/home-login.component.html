@@ -1,12 +1,13 @@
 <div class="popup">
-  
+
   <div class="popup__content col-md-8 col-lg-6">
-    <!-- <div class="alert alert-danger" [hidden]="!error">
+
+
+    <div class="alert alert-danger" [hidden]="!error">
       There was a problem logging in. Please try again.
-    </div> -->
+    </div>
     <button type="button close" class="close" (click)="onCloseHandled()">&times;</button>
 
-    
     <form class="form offset-md-1 col-md-10" (ngSubmit)="login()">
       <div class="form__group">
         <label class="form__label" for="username">Username</label>
@@ -18,8 +19,6 @@
         <input type="password" class="form__input" placeholder="Password" name="password" [(ngModel)]="credentials.password" required/>
       </div>
       <button type="submit" class="btn form-control btn-text">Submit</button>
-    </form> 
-    
-    
+    </form>
   </div>
 </div>

@@ -1,0 +1,32 @@
+<div class="popup">
+  <div class="popup__content">
+    <ul>
+      <div style="color: white;" *ngFor="let room of rooms">
+        <div>
+          Room Number: {{room.roomNumber}} Type: {{room.type}} Price: {{room.price}} Available: {{room.available}}
+          <input type="checkbox" id="roomCheckbox" (change)="addToCart($event, room)">
+
+
+        </div>
+      </div>
+    </ul>
+    <div>
+      <button (click) = "makeReservation(content)">Reserve</button>
+    </div>
+  </div>
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>One fine body&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c()">Confirm</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c()">Cancel</button>
+  </div>
+</ng-template>

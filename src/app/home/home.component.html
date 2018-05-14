@@ -11,6 +11,7 @@
   <p class="home-para">Find the luxurious getaway that you've always dreamed of. Login with user1 as username and admin as password destination Lorem ipsum
     dolor sit amet consectetur, adipisicing elit. Deleniti eveniet error culpa sit eius rerum minima.
   </p>
-  <a routerLink="" (click)="hide=false" class="btn btn--white">Find your getaway</a>
+  <a routerLink="/home/login" class="btn btn--white">Find your getaway</a>
+  
 </div>
-<app-home-login [hidden]="hide" (close)="onCloseHandled()"></app-home-login>
+<router-outlet></router-outlet>

@@ -1,4 +1,3 @@
-<ng-template [ngIf]="auth.isAuthenticated()">
 <div class="transparent col-lg-12">
   <nav class="col-lg-8 offset-lg-2">
 
@@ -10,8 +9,8 @@
         <a routerLink="/hotels">Hotels</a>
       </li>
       <li>
-        <img src="../../assets/images/profile1.jpg" class="img-thumbnail" alt="profile picture">
-        
+        <img [src]="(userProfileImgUrl | async)" class="img-thumbnail" alt="profile picture">
+
       </li>
       <li>
         <a (click)="logout()">Logout</a>
@@ -19,4 +18,5 @@
     </ul>
   </nav>
 </div>
-</ng-template>
+
+

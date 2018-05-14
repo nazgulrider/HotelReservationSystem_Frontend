@@ -12,9 +12,10 @@ import { UserService } from '../shared/user.service';
 })
 export class NavbarComponent implements OnInit {
 
-  private user:User;
+  private userProfileImgUrl: Observable<string>;
   
-  constructor(public auth: AuthService) { 
+  constructor(public auth: AuthService, private userService: UserService) { 
+    this.userProfileImgUrl = userService.getUserProfileImageUrlObservable();
   }
 
   ngOnInit() {
