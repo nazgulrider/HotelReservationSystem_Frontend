@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row  profile">
+    <div class="profile__about col-sm-5">
+      <div class="profile__card">
+        <div>
+          <img class="profile__card--image" [src]="(user.profileImgUrl)" alt="Profile Image">
+        </div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia accusantium accusamus nulla, at numquam modi rerum!
+          Numquam rem modi provident inventore dolore, alias, eum et nihil corporis, eligendi molestiae vel?</p>
+      </div>
+    </div>
+    <div class="profile__reservation col">
+      <div *ngIf="reservations.length > 0; else infoText">
+        <ul>
+          <div class="profile__reservation--card" *ngFor="let res of reservations">
+            {{res.id}} Checkin: {{res.checkIn * 1000 | date:'shortDate'}} Checkout: {{res.checkOut * 1000 | date:'shortDate'}}
+          </div>
+        </ul>
+      </div>
+      <ng-template #infoText>
+        <p>Your Reservations Listed Here</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

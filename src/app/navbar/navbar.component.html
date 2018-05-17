@@ -1,17 +1,22 @@
 <div class="transparent col-lg-12">
-  <nav class="col-lg-8 offset-lg-2">
+  <nav class="container">
 
     <ul>
-      <li>
-        <a routerLink="/home">Home</a>
-      </li>
+      
       <li>
         <a routerLink="/hotels">Hotels</a>
       </li>
       <li>
+        <a routerLink="/profile">Profile</a>
+      </li>
+      <a routerLink="/profile">
+      <li>
+        
         <img [src]="(userProfileImgUrl | async)" class="img-thumbnail" alt="profile picture">
 
       </li>
+      </a>
+
       <li>
         <a (click)="logout()">Logout</a>
       </li>      

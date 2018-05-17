@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { UserService } from './shared/user.service';
 
@@ -8,8 +8,12 @@ import { UserService } from './shared/user.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'perfect';
 
-  constructor(private auth: AuthService, private userService:UserService){}
 
+  constructor(private auth: AuthService,
+    private userService:UserService
+    ){}
+
+  
 }

@@ -1,0 +1,42 @@
+@import '~sass/variables';
+
+
+.profile {
+    margin-top: 6rem;
+    text-align: center;
+    overflow: hidden;
+    // &__about {
+    //     margin-left: 5rem;
+    //     margin-right: 5rem;
+    // }
+
+    &__card {
+        padding: 3rem 3rem;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
+        
+
+        &--image {
+            height: 20rem;
+            width: 20rem;
+            border-radius: 100rem;
+            margin-bottom: 3rem;
+            overflow: hidden;
+        }
+
+    }
+
+    &__reservation {
+        overflow-y: auto;
+        height: 90vh;
+
+        &--card{
+            height: 10rem;
+            padding: 3rem 3rem;
+            box-shadow: 0 1.5rem 4rem rgba($color-black, .1);
+        }
+    }
+}
+
+
+    
+

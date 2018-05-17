@@ -47,50 +47,59 @@ export class HotelDetailsComponent implements OnInit {
 
   private model: string = null;
 
-  onDateRangeChanged(event: IMyDateRangeModel) {
+  onDateRangeChanged(event: IMyDateRangeModel, roomType: string) {
     console.log('jsdate: ' + event.beginEpoc + " - " + event.endJsDate);
 
     this.hotelService.selectedCheckinDate = event.beginEpoc;
     this.hotelService.selectedCheckoutDate = event.endEpoc;
+       
+    this.filterByDates(this.hotelService.rooms, event);
+    this.hotelService.filteredRooms = this.filteredRooms.filter((room)=> room.type === roomType);
 
-    this.hotelService.filteredRooms = this.hotelService.rooms.filter(
-      room => room.reservations.length === 0 
-      //  || room.reservations.filter(reservation=>{
-      //     !(reservation.checkIn >= event.beginEpoc && reservation.checkIn <= event.endEpoc)
-      //       && !(reservation.checkIn >= event.beginEpoc && reservation.checkIn <= event.endEpoc)
-      // })
-
-
-    );
-
-    // this.hotelService.filteredRooms = this.hotelService.rooms.filter(room =>
-    //   room.reservation === null || !(event.beginEpoc >= room.reservation.checkIn && event.beginEpoc <= room.reservation.checkOut)
-    //    && !(room.reservation.checkIn >= event.beginEpoc && room.reservation.checkIn <= event.endEpoc)         
-    //  )
+      
     console.log(this.hotelService.filteredRooms);
   }
 
-  filter(room: Room, event: any) {
+  filterByDates(rooms: Room[], event: any) {
+    // this.filteredRooms=[];
+    let available = true;
 
-    let answer= room.reservations.map(reservation => {
-      if (
-        !(event.beginEpoc >= reservation.checkIn && event.beginEpoc <= reservation.checkOut)
-        && !(reservation.checkIn >= event.beginEpoc && reservation.checkIn <= event.endEpoc)
-      ) {
-        return false;
+    //check all rooms
+    for (let i = 0; i < rooms.length; i++) {
+      //if room has no reservation add to available rooms(filteredRooms)
+      if (rooms[i].reservations.length === 0) {
+        this.filteredRooms.push(rooms[i])
+        
+        //if room has reservations check all reservations
+      } else {
+        for (let j = 0; j < rooms[i].reservations.length; j++) {
+          
+          let checkIn = rooms[i].reservations[j].checkIn;
+          let checkOut = rooms[i].reservations[j].checkOut;
+          //if selected range falls within any one of the reservations set available to false and stop checking the rest
+          if ((event.beginEpoc >= checkIn && event.beginEpoc <= checkOut) ||
+            (event.endEpoc >= checkIn && event.endEpoc <= checkOut) ||
+            (checkIn >= event.beginEpoc && checkIn <= event.endEpoc)
+          ) {
+            available=false;
+            break;
+          }         
+          
+        }
+        //if loop is done and room was available add room to available rooms
+        if (available) {
+          this.filteredRooms.push(rooms[i]);
+        }
       }
-      return true;
     }
-
-    )
-
-    console.log(answer)
-
   }
 
 
 
-
+/**
+ * navigates out of the child component that displays the room types
+ * 
+ */
   onCloseHandled() {
     this.router.navigate(['hotels']);
     this.showDatePicker1 = false;

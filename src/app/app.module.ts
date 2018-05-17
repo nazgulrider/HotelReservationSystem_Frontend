@@ -25,6 +25,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AuthGuard } from './shared/auth-guard.service';
 import { UserService } from './shared/user.service';
 import { RoomListComponent } from './hotel/room-list/room-list.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ReservationService } from './shared/reservation.service';
 
 
 
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
   {path: 'hotels', component: HotelComponent, canActivate: [AuthGuard], children: [
     { path: ':id/detail', component: HotelDetailsComponent },
     { path: ':id/rooms', component: RoomListComponent }
-  ]}
+  ]},
+  {path: 'profile', component: ProfileComponent}
 ];
 
 @NgModule({
@@ -48,6 +51,7 @@ const appRoutes: Routes = [
     HomeLoginComponent,
     NavbarComponent,
     RoomListComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,8 @@ const appRoutes: Routes = [
     CookieService,
     AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },
-    UserService
+    UserService,
+    ReservationService
   ],
   bootstrap: [AppComponent]
 })

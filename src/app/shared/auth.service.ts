@@ -26,7 +26,8 @@ export class AuthService {
             console.log(response);
             if (response['name']) {
                 this.authCookie.set('authenticated', 'true', .2);
-                this.userService.getUser(response['name']);
+                
+                this.userService.getUserByUsername(response['name']);
             }
             return callback && callback();
         },

@@ -8,24 +8,28 @@ import { Room } from "../shared/room.model";
 @Injectable()
 export class HotelService {
 
-    public hotels:Hotel[] = [];
-    public rooms:Room[] = [];
-    filteredRooms:Room[] = [];
+    public hotels: Hotel[] = [];
+    public rooms: Room[] = [];
+    filteredRooms: Room[] = [];
     selectedHotel: Hotel;
     selectedCheckinDate: number;
     selectedCheckoutDate: number;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
-    getHotels():Observable<Hotel[]> {
-        return this.http.get('/api/hotels').map((result:any) => {
-           return result.content.map(content => content.hotel)
-        })
+    getHotels(): Observable<Hotel[]> {
+        return this.http.get('/api/hotels').map(
+            (result: any) => {
+                return result.content.map(content => content.hotel)
+            }
+        )
     }
 
-    getRooms(hotelId:Number):Observable<Room[]>{
-        return this.http.get('/api/hotels/'+hotelId+'/rooms').map((result:any) => {
-            return result.content.map(content => content.room)
-        })
-    }    
+    getRooms(hotelId: Number): Observable<Room[]> {
+        return this.http.get('/api/hotels/' + hotelId + '/rooms').map(
+            (result: any) => {
+                return result.content.map(content => content.room)
+            }
+        )
+    }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HotelService } from '../hotel.service';
 import { Room } from '../../shared/room.model';
 import { UserService } from '../../shared/user.service';
@@ -15,22 +15,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./room-list.component.scss']
 })
 export class RoomListComponent implements OnInit {
-
+  user: User;
   rooms: Room[] = [];
   cart: Room[] = [];
+  @ViewChild('confirmation') confirmation: any;
 
   constructor(private hotelService: HotelService,
-    private router:Router,
+    private router: Router,
     private http: HttpClient,
-     private userService: UserService,
-      private modalService: NgbModal) {
+    private userService: UserService,
+    private modalService: NgbModal) {
     this.rooms = hotelService.filteredRooms;
   }
 
   ngOnInit() {
     console.log(this.cart)
+    this.getUser();
+    console.log("getting user")
+    this.user = this.userService.loggedInUser;
   }
- 
+
 
   addToCart(event: any, room: Room) {
     if (event.target.checked) {
@@ -44,31 +48,44 @@ export class RoomListComponent implements OnInit {
       }
     }
   }
+  getUser() {
+    this.http.get('api/auth').subscribe(response => {
 
-  makeReservation(content){
+      if (response['name']) {
+        this.userService.getUserByUsername(response['name']);
+      }
+    },
+      (error) => console.log(error)
+
+    )
+  }
+
+  makeReservation(content) {
     console.log("making reservation")
 
-    //collected when first logged in
-    const user:User = this.userService.loggedInUser;
-
     //collected when selected in hotel-details component
-    const hotel:Hotel = this.hotelService.selectedHotel;
+    const hotel: Hotel = this.hotelService.selectedHotel;
 
     //collected when selecting date in hotel-details component
     const checkIn = this.hotelService.selectedCheckinDate;
     const checkOut = this.hotelService.selectedCheckoutDate;
 
-    let reservation:Reservation = new Reservation (checkIn,checkOut,false,user,hotel,this.cart);
+    let reservation: Reservation = new Reservation(checkIn, checkOut, false, this.user, hotel, this.cart);
 
-    this.modalService.open(content).result.then(() => {
-      console.log(`making post request to reservations for user ${user}`);
+    this.modalService.open(content, { centered: true }).result.then(() => {
+      console.log(`making post request to reservations for user ${this.user}`);
       this.http.post('/api/reservations', reservation).subscribe(
-        (response)=> {
+        (response) => {
           console.log(response);
-          this.router.navigate(['hotels']);
+          this.modalService.open(this.confirmation, { centered: true }).result.then(
+            () => {
+              this.router.navigate(['profile']);
+            },
+            () => console.log("ok")
+          )
         },
-        (error)=>{
-          console.log(error);          
+        (error) => {
+          console.log(error);
         }
 
       );
@@ -77,4 +94,17 @@ export class RoomListComponent implements OnInit {
       console.log(`Cancelled the reservation`);
     });
   }
+
+  onCloseHandled() {
+    this.router.navigate(['hotels']);
+  }
+
+  //cancel the click event from propagating to the parent div which triggers close event on the window
+  onCardClicked(e: Event) {
+    if (e) {
+      e.stopPropagation();
+    }
+    return false;
+  }
+
 }

@@ -15,10 +15,11 @@ export class NavbarComponent implements OnInit {
   private userProfileImgUrl: Observable<string>;
   
   constructor(public auth: AuthService, private userService: UserService) { 
-    this.userProfileImgUrl = userService.getUserProfileImageUrlObservable();
   }
 
   ngOnInit() {
+    this.userProfileImgUrl = this.userService.getUserProfileImageUrlObservable();
+
   }
  
 
